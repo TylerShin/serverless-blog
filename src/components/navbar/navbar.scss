@@ -1,0 +1,30 @@
+$navbarHeight: 44px;
+$navbarMaxWidth: 1024px;
+
+.navbarWrapper {
+  display: flex;
+  justify-content: center;
+  flex: 0 0 $navbarHeight;
+  height: $navbarHeight;
+  background-color: rgba(0, 0, 0, .85);
+  color: #fff;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    width: $navbarMaxWidth;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.navbarItem {
+  display: inline-block;
+  vertical-align: top;
+  height: $navbarHeight;
+  line-height: $navbarHeight;
+  padding: 0 10px;
+  margin: 0;
+  font-size: 16px;
+}

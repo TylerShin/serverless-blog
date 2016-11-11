@@ -138,6 +138,6 @@ if (!IS_PROD) {
       </Provider>
     </CssInjector>
     ,
-    document.getElementById("isomorphic-lambda")
+    document.getElementById("emologic-app")
   );
 }
