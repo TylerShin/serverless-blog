@@ -140,4 +140,12 @@ if (!IS_PROD) {
     ,
     document.getElementById("emologic-app")
   );
+} else {
+  serverSideRender("/emologic", "scriptpath")
+    .then((res: string) => {
+      console.log(res);
+    })
+    .catch((err: Error) => {
+    console.error("error!!", err);
+  })
 }

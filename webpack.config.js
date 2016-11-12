@@ -10,7 +10,8 @@ module.exports = {
     './src/index.tsx',
   ],
   output: {
-    filename: './dist/bundle.js',
+    path: __dirname + "/dist",
+    filename: 'bundle.js',
   },
   devtool: 'source-map',
   resolve: {

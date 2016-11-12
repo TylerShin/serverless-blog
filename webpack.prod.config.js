@@ -6,7 +6,8 @@ module.exports = {
     './src/index.tsx',
   ],
   output: {
-    filename: './dist/bundle.js',
+    path: __dirname + "/dist",  
+    filename: 'bundle.js',
   },
   target: 'node',
   resolve: {
