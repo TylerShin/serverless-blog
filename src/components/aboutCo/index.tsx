@@ -8,8 +8,19 @@ class AboutCo extends React.Component<{}, {}> {
     return (
       <div className={styles.aboutCoWrapper}>
         <div className={styles.headerWrapper}>
-          <img src="http://res.cloudinary.com/pengyou/image/upload/v1478930471/think-baby-cut_g4uw4s.jpg" />
-          <h1 className={styles.headline}>What makes <b>AWESOME</b> product?</h1>
+          <img src="http://res.cloudinary.com/pengyou/image/upload/v1478944663/think-baby-cut_pkkcaf.jpg" />
+          <div className={styles.headerSection}>
+            <div className={styles.mainHeader}>
+              <div>WHAT</div>
+              <div>MAKES</div>
+              <div>THE</div>
+              <div><b>AWESOME</b></div>
+              <div>PRODUCT?</div>
+            </div>
+            <div className={styles.subHeader}>
+              we must start with this question
+            </div>
+          </div>
         </div>
       </div>
     );
