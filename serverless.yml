@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: tylor-serverless-blog # NOTE: update this with your service name
+service: tylor-blog # NOTE: update this with your service name
 
 provider:
   name: aws
@@ -50,6 +50,9 @@ functions:
       - http:
           method: get
           path: ${self:service}
+      - http:
+          method: any
+          path: ${self:service}/{proxy+}
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
@@ -72,6 +75,9 @@ resources:
         DistributionConfig:
           DefaultRootObject: ''
           Enabled: true
+          ViewerCertificate:
+            AcmCertificateArn: arn:aws:acm:us-east-1:624950342265:certificate/7b8b7f19-faa9-44f3-90be-038a38329160
+            SslSupportMethod: sni-only
           DefaultCacheBehavior:
             AllowedMethods:
               - GET
@@ -97,7 +103,7 @@ resources:
             DomainName:
               "Fn::Join": ["", [{"Ref": "ApiGatewayRestApi"}, ".execute-api.${self:provider.region}.amazonaws.com"]]
             Id: "${self:service}-${self:provider.stage}-api-gateway"
-            OriginPath: /${self:provider.stage}
+            OriginPath: /${self:provider.stage}/${self:service}
 #resources:
 #  Resources:
 #    NewResource:
