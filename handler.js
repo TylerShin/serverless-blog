@@ -19,7 +19,6 @@ module.exports.SSR = (event, context, callback) => {
         },
        body: result,
       };
-      console.log(result);
       context.done(null, response);
     })
     .catch((err) => {
