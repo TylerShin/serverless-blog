@@ -3,6 +3,9 @@
   "rules": {
     "jsdoc-format": false,
     "no-string-literal": false,
-    "no-var-requires": false
+    "no-var-requires": false,
+    "max-line-length": [
+      false
+    ]
   }
 }
