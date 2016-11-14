@@ -2,13 +2,15 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import * as syncExampleReducer from './syncExample';
 
-export interface InitialState {
+export interface IAppState {
   syncExample: syncExampleReducer.SyncExampleState;
 }
 
-export const initialState:InitialState = {
+export const initialState: IAppState = {
   syncExample: syncExampleReducer.SYNC_EXAMPLE_STATE,
 };
+
+export const jsonedInitialState = JSON.stringify(initialState);
 
 const rootReducer = combineReducers({
   syncExample: syncExampleReducer.syncExampleReducer,

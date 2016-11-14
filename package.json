@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy-serverless-to-stage": "serverless deploy -v",
     "deploy-serverless-to-prod": "serverless deploy --stage production",
-    "deploy-prod": "npm run build-prod && npm run deploy-serverless-to-prod"
+    "deploy-prod": "npm run build-prod && ts-node scripts/deployToProd && npm run deploy-serverless-to-prod"
   },
   "author": "Tylor Shin",
   "license": "ISC",
@@ -54,9 +54,9 @@
     "source-map-loader": "0.1.5",
     "ts-jest": "^17.0.0",
     "ts-loader": "0.9.3",
-    "ts-node": "1.6.0",
+    "ts-node": "^1.6.0",
     "tslint": "^3.15.1",
-    "typescript": "2.0.8",
+    "typescript": "^2.0.8",
     "webpack": "1.13.2",
     "webpack-dashboard": "0.2.0",
     "webpack-dev-server": "1.16.2"

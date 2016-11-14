@@ -15,7 +15,7 @@ export function staticHTMLWrapper(
       </head>
       <body>
         <script>window.__INITIAL_STATE__=${initialState}</script>
-        <div id="vingle-web">
+        <div id="emologic-app">
           ${reactDom}
         </div>
         <script src="${scriptPath}"></script>

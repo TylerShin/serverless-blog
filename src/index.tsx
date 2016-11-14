@@ -2,7 +2,7 @@ import * as Immutable from "immutable";
 import * as React from "react";
 import * as ReactDom from "react-dom";
 import * as ReactDOMServer from "react-dom/server";
-import { RouterContext, match, Router, createMemoryHistory, hashHistory } from "react-router";
+import { RouterContext, match, Router, createMemoryHistory, browserHistory, hashHistory } from "react-router";
 import { History } from "history";
 // import Redux environment
 import { createStore, applyMiddleware } from "redux";
@@ -11,7 +11,7 @@ import * as ReactRouterRedux from "react-router-redux";
 import * as createLogger from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 // import reducers
-import rootReducer from "./reducers";
+import rootReducer, { IAppState, jsonedInitialState } from "./reducers";
 // import routes
 import routes from "./routes";
 // import components
@@ -20,22 +20,35 @@ import CssInjector, { css } from "./components/cssInjector";
 import { staticHTMLWrapper } from "./helpers/htmlWrapper";
 
 const IS_PROD: boolean = (process.env.NODE_ENV === "production");
+const IS_SERVER: boolean = (typeof window === "undefined");
 const IS_STAGING: boolean = (process.env.NODE_ENV === "staging");
 
 let history: History;
 if (IS_PROD) {
-  history = createMemoryHistory(); // HACK: You should get request path to sync it with redux store(maybe)
+  if (IS_SERVER) {
+    history = createMemoryHistory(); // HACK: You should get request path to sync it with redux store(maybe)
+  } else {
+    history = browserHistory;
+  }
 } else {
   history = hashHistory;
 }
 
 const routerMid: Redux.Middleware = ReactRouterRedux.routerMiddleware(history);
 
+let AppInitialState: IAppState;
+try {
+  AppInitialState = (window as any).__INITIAL_STATE__;
+} catch (err) {
+  AppInitialState = JSON.parse(jsonedInitialState);
+}
+
 // Create store
 let store: any;
 if (IS_PROD) {
   store = createStore(
     rootReducer,
+    AppInitialState,
     // TODO: Add InitialState and Define State types to change 'any' type
     applyMiddleware(routerMid, thunkMiddleware)
   );
@@ -57,6 +70,7 @@ if (IS_PROD) {
 
   store = createStore(
     rootReducer,
+    AppInitialState,
     applyMiddleware(routerMid, thunkMiddleware, logger)
   );
 }
@@ -130,7 +144,7 @@ export async function serverSideRender(requestUrl: string, scriptPath: string) {
   return Promise.resolve(fullHTML);
 }
 
-if (!IS_PROD) {
+if (!IS_SERVER) {
   ReactDom.render(
     <CssInjector>
       <Provider store={store}>
@@ -140,12 +154,4 @@ if (!IS_PROD) {
     ,
     document.getElementById("emologic-app")
   );
-} else {
-  serverSideRender("/emologic", "scriptpath")
-    .then((res: string) => {
-      console.log(res);
-    })
-    .catch((err: Error) => {
-    console.error("error!!", err);
-  })
 }

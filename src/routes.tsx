@@ -6,7 +6,7 @@ import AboutCo from "./components/aboutCo";
 
 const routeMap = (
   <Route path="/" component={App}>
-    <Route path="/emologic" component={AboutCo} />
+    <Route path="emologic" component={AboutCo} />
   </Route>
 );
 
