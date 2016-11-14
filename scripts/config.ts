@@ -44,4 +44,4 @@ export const BUCKET: string = "tylor-blog-assets";
 export const APP_DEST: string = "./dist/";
 export const VERSION_FILE_NAME: string = "version";
 export const PREFIX: string = "desktop_web";
-export const DEPLOY_TARGET_FILE: string = "./dist/bundle.js";
+export const DEPLOY_TARGET_FILE: string = "./dist/bundle.js.gz";

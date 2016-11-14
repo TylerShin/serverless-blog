@@ -15,6 +15,7 @@ export default function pushToS3(NEW_TAG: string) {
         Bucket: DeployConfig.BUCKET,
         Key: `${DeployConfig.PREFIX}/${NEW_TAG}_bundle.js`,
         CacheControl: "public, max-age=604800",
+        ContentEncoding: "gzip",
       },
     });
 
