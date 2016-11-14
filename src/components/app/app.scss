@@ -19,6 +19,14 @@
   }
 }
 
+ul {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start: 0px;
+}
+
 .appWrapper {
   display: flex;
   flex-direction: column;

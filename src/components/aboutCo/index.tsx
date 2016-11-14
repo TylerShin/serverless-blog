@@ -23,18 +23,22 @@ class AboutCo extends React.Component<{}, {}> {
           </div>
         </div>
         <div className={styles.contentWrapper}>
-          <div className={styles.contentHeader}>I believe that there are things we have to pursue.</div>
+          <div className={styles.contentHeader}>
+          I believe.<br />
+          We have to pursue these values.
+          </div>
           <ul>
             <li className={`${styles.listItem} clearfix`}>
               <div className={styles.listLeftBlock}>Emotion</div>
               <div className={styles.listRightBlock}>
-                The nice products usually touch our emotion. and it usually becomes our reason to keep using the products.
+                The nice products usually touch our emotion.<br />
+                and it usually becomes our reason to keep using the products.
               </div>
             </li>
             <li className={`${styles.listItem} clearfix`}>
               <div className={styles.listLeftBlock}>Logic</div>
               <div className={styles.listRightBlock}>
-                It's essential to have the logical, engineered values.
+                It's essential to have the logical, engineered values.<br />
                 Stability, High-performance, Organized algorithm, etc...
               </div>
             </li>
