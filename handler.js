@@ -65,6 +65,11 @@ module.exports.writePosts = (event, context) => {
     }
   }
 
+  if (process.env.BLOG_PASSWORD !== body.password) {
+    const err = new Error("wrong password");
+    context.done(err, { statusCode: 500 });
+  }
+
   dynamodb.putItem(params, (err, data) => {
     if (err) {
       console.error(err);
