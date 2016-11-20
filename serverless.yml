@@ -71,6 +71,19 @@ functions:
 # you can add CloudFormation resource templates here
 resources:
   Resources:
+    DynamoDbTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: serverlessBlogPosts
+        AttributeDefinitions:
+          - AttributeName: postId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: postId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
     CloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:

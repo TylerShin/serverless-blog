@@ -24,7 +24,8 @@ module.exports.SSR = (event, context, callback) => {
         statusCode: 200,
         headers: {
           "Content-Type": "text/html",
-          "Access-Control-Allow-Origin" : "*"
+          "Access-Control-Allow-Origin" : "*",
+          "Cache-control": "max-age=300",
         },
        body: result,
       };
