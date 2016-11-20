@@ -55,6 +55,13 @@ functions:
       - http:
           method: any
           path: ${self:service}/{proxy+}
+  writePosts:
+    handler: handler.writePosts
+    events:
+      - http:
+          method: post
+          path: ${self:service}/posts/new
+          cors: true
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
@@ -84,6 +91,22 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 5
           WriteCapacityUnits: 5
+          
+    DynamoDBIamPolicy:
+      Type: AWS::IAM::Policy
+      DependsOn: DynamoDbTable
+      Properties:
+        PolicyName: AmazonDynamoDBFullAccess
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - dynamodb:GetItem
+                - dynamodb:PutItem
+              Resource: arn:aws:dynamodb:*:*:table/serverlessBlogPosts
+        Roles:
+          - Ref: IamRoleLambdaExecution
     CloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:
