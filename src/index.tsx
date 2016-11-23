@@ -40,6 +40,7 @@ let AppInitialState: IAppState;
 try {
   AppInitialState = (window as any).__INITIAL_STATE__;
 } catch (err) {
+  console.error(err);
   AppInitialState = JSON.parse(jsonedInitialState);
 }
 
