@@ -1,8 +1,9 @@
 import ssr from "./ssr";
 import writePosts from "./writePosts";
+import readPosts from "./readPosts";
 
-console.log(ssr, writePosts);
 module.exports = {
   ssr,
   writePosts,
+  readPosts,
 };

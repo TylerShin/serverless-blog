@@ -1,6 +1,7 @@
-const AWS = require("aws-sdk");
 const uuid = require("uuid");
+const AWS = require("aws-sdk");
 const dynamodb = new AWS.DynamoDB();
+import { DYNAMO_DB_TABLE_NAME } from "../constants";
 
 export default function handler(event: any, context: any) {
   const body = JSON.parse(event.body);
@@ -9,7 +10,7 @@ export default function handler(event: any, context: any) {
   console.log(body.title, "titletitletitletitletitletitletitletitletitletitle");
 
   const params = {
-    TableName: "serverlessBlogPosts",
+    TableName: DYNAMO_DB_TABLE_NAME,
     Item: {
       postId: {
         S: uuid(),
