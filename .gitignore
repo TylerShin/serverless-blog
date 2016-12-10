@@ -19,6 +19,7 @@ dst
 .Trashes
 ehthumbs.db
 Thumbs.db
+.idea
 
 # Packages #
 ############
