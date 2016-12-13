@@ -11,7 +11,7 @@ export default function handler(event: any, context: any) {
     ssr = eval(ssrString);
   } catch (e) {
     console.log(e);
-    return;
+    context.done(e);
   }
   const path = event.path;
 

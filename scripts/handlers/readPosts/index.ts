@@ -12,17 +12,16 @@ export default function handler(event: any, context: any) {
   dynamodb.scan(params, function (err: Error, data: any) {
     if (err) {
       console.error(err, err.stack);
-    }
-    else {
+      context.done(err);
+    } else {
       const response = {
-        statusCode: 200,
+        body: JSON.stringify(data.Items),
         headers: {
-          "Content-Type": "application/json; charset=utf-8",
           "Access-Control-Allow-Origin": "*",
-          "Cache-control": "max-age=300",
         },
-        body: data.Items,
+        statusCode: 200,
       };
+      console.log(response);
       context.done(null, response);
     }
   });

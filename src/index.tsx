@@ -136,11 +136,13 @@ export async function serverSideRender(requestUrl: string, scriptPath: string) {
     });
   });
 
+  const cssArr = Array.from(css);
+
   const fullHTML: string = staticHTMLWrapper(
     renderedHTML,
     scriptPath,
     stringifiedInitialReduxState,
-    [...css].join("")
+    cssArr.join(""),
   );
   return Promise.resolve(fullHTML);
 }

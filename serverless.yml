@@ -46,6 +46,19 @@ package:
  artifact: dist.zip
 
 functions:
+  readPosts:
+    handler: handlers.readPosts
+    events:
+      - http:
+          method: get
+          path: ${self:service}/api/posts
+  writePosts:
+    handler: handlers.writePosts
+    events:
+      - http:
+          method: post
+          path: ${self:service}/api/posts/new
+          cors: true
   ssr:
     handler: handlers.ssr
     events:
@@ -55,21 +68,6 @@ functions:
       - http:
           method: any
           path: ${self:service}/{proxy+}
-  
-  writePosts:
-    handler: handlers.writePosts
-    events:
-      - http:
-          method: post
-          path: ${self:service}/posts/new
-          cors: true
-  
-  readPosts:
-    handler: handlers.readPosts
-    events:
-      - http:
-          method: get
-          path: ${self:service}/posts
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

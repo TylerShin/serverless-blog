@@ -5,6 +5,11 @@
     "noImplicitAny": true,
     "module": "commonjs",
     "target": "es5",
+    "lib": [
+      "es2016",
+      "es6",
+      "dom"
+    ],
     "jsx": "react",
     "removeComments": true,
     "experimentalDecorators": true
@@ -14,7 +19,6 @@
     "scripts/handlers/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
+    "node_modules"
   ]
 }

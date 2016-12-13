@@ -11,12 +11,13 @@ module.exports = {
   },
   target: 'node',
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js'],
+    modulesDirectories: ['node_modules'],
   },
   module: {
     loaders: [
       { test: /\.json?$/, loader: 'json-loader' },
-      { test: /\.tsx?$/, loader: 'babel?presets[]=stage-0,presets[]=es2015,plugins=transform-runtime!ts' },
+      { test: /\.tsx?$/, loader: 'ts-loader' },
       {
         test: /\.scss$/,
         loaders: [
