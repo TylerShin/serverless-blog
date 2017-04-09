@@ -37,6 +37,7 @@
     "@types/redux-logger": "^2.6.32",
     "@types/redux-mock-store": "^0.0.5",
     "@types/redux-thunk": "^2.1.31",
+    "@types/uuid": "^2.0.29",
     "autoprefixer": "^6.5.1",
     "aws-sdk": "^2.6.10",
     "css-loader": "^0.25.0",
@@ -87,7 +88,8 @@
     "redux": "3.6.0",
     "redux-logger": "2.7.0",
     "redux-thunk": "2.1.0",
-    "tether": "^1.4.0"
+    "tether": "^1.4.0",
+    "uuid": "^3.0.1"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/ts-jest/preprocessor.js",

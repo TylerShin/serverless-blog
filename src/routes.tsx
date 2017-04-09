@@ -7,11 +7,13 @@ import AboutCo from "./components/aboutCo";
 import WritingForm from "./components/writingForm";
 import PostList from "./components/postList";
 import PostShow from "./components/postShow";
+import SignIn from "./components/signIn";
 
 const routeMap = (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
     <Route path="tylorshin" component={AboutCo} />
+    <Route path="auth" component={SignIn} />
     <Route path="posts">
       <IndexRoute component={PostList} />
       <Route path="new" component={WritingForm} />
