@@ -3,6 +3,7 @@ dst
 .serverless
 .vscode
 .env
+temp
 # Logs and databases #
 ######################
 *.log

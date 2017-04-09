@@ -1,16 +1,15 @@
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
+const BROWSER_BUNDLE_FILE_NAME = "bundleBrowser.js";
 
 module.exports = {
   entry: [
+    'babel-polyfill',
     './src/index.tsx',
   ],
   output: {
-    libraryTarget: "commonjs",
-    library: "ssr",
-    filename: './dist/bundle.js',
+    filename: `./dist/${BROWSER_BUNDLE_FILE_NAME}`,
   },
-  target: 'node',
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js'],
   },
@@ -68,6 +67,9 @@ module.exports = {
         ]
       }
     ],
+  },
+  node: {
+    fs: "empty"
   },
   externals: {
     'react/lib/ExecutionEnvironment': true,

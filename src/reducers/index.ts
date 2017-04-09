@@ -12,9 +12,8 @@ export const initialState: IAppState = {
 
 export const jsonedInitialState = JSON.stringify(initialState);
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   syncExample: syncExampleReducer.syncExampleReducer,
   routing: routerReducer,
 });
 
-export default rootReducer;

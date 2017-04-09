@@ -1,6 +1,6 @@
 import * as React from "react";
 import PostAPI from "../../api/post";
-import { Link } from "react-router";
+// import { Link } from "react-router";
 
 class WritingForm extends React.Component<{}, {}> {
   public render() {

@@ -3,20 +3,23 @@
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
+    "allowUnusedLabels": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "module": "commonjs",
     "target": "es5",
+    "jsx": "react",
     "lib": [
-      "es2016",
       "es6",
+      "es2016",
       "dom"
     ],
-    "jsx": "react",
     "removeComments": true,
     "experimentalDecorators": true
   },
   "include": [
-    "src/**/*",
-    "scripts/handlers/**/*"
+    "app/**/*",
+    "scripts/**/*"
   ],
   "exclude": [
     "node_modules"

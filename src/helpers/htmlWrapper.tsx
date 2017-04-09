@@ -1,15 +1,15 @@
 export function staticHTMLWrapper(
   reactDom: string,
   scriptPath: string,
-  initialState: string, // JSON stringified string
-  css: string
-): string {
+  initialState: string,
+  css: string,
+) {
   return `
     <!doctype html>
     <html>
       <head>
         <meta charset="utf-8">
-        <title>EmoLogic</title>
+        <title>EmoLogic | Tylor Shin Blog</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <style type="text/css">${css}</style>
       </head>

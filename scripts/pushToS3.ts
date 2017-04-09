@@ -1,4 +1,4 @@
-import * as DeployConfig from "./config";
+import * as DeployConfig from "./builds/config";
 const s3 = require("s3");
 
 export default function pushToS3(NEW_TAG: string) {

@@ -4,25 +4,11 @@ provider:
   runtime: nodejs4.3
   stage: production
   region: us-east-1
-  environment: ${file(./config.js):env}
 package:
   artifact: dist.zip
 functions:
-  readPosts:
-    handler: handlers.readPosts
-    events:
-      - http:
-          method: get
-          path: ${self:service}/api/posts
-  writePosts:
-    handler: handlers.writePosts
-    events:
-      - http:
-          method: post
-          path: ${self:service}/api/posts/new
-          cors: true
   ssr:
-    handler: handlers.ssr
+    handler: handler.ssr
     events:
       - http:
           method: get
