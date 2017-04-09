@@ -23,7 +23,7 @@ class Navbar extends React.Component<{}, {}> {
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Tylor Shin</Link>
+              <Link className="nav-link" to="/tylorshin">Tylor Shin</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/posts">Diary</Link>

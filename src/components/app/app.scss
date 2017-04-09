@@ -28,13 +28,11 @@ ul {
 }
 
 .appWrapper {
-  display: flex;
-  flex-direction: column;
   height: 100%;
   min-height: 100%;
 }
 
 .contentWrapper {
-  flex: auto;
-  overflow-y: auto;
+  height: 100%;
+  min-height: 100%;
 }

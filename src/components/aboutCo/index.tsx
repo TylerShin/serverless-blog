@@ -1,75 +1,85 @@
 import * as React from "react";
+import * as axios from "axios";
 
 const withStyles: (styles: any) => Function = require("isomorphic-style-loader/lib/withStyles").default;
 const styles = require("./aboutCo.scss");
 
-class AboutCo extends React.Component<{}, {}> {
+interface IAboutCoProps {}
+interface IAboutCoStates {
+  user: {
+    login: string;
+    id: number;
+    avatar_url: string;
+    gravatar_id: string;
+    url: string;
+    html_url: string;
+    followers_url: string;
+    following_url: string;
+    gists_url: string;
+    starred_url: string;
+    subscriptions_url: string;
+    organizations_url: string;
+    repos_url: string;
+    events_url: string;
+    received_events_url: string;
+    type: string;
+    site_admin: boolean;
+    name: string;
+    company: string;
+    blog: string;
+    location: string;
+    email: string;
+    hireable: boolean;
+    bio: string;
+    public_repos: number;
+    public_gists: number;
+    followers: number;
+    following: number;
+    created_at: Date;
+    updated_at: Date;
+  };
+}
+
+@withStyles(styles)
+class AboutCo extends React.Component<IAboutCoProps, IAboutCoStates> {
+  public constructor(props: IAboutCoProps) {
+    super(props);
+
+    this.state = {
+      user: null,
+    };
+  }
+
+  public async componentDidMount() {
+    const result = await axios.get("https://api.github.com/users/tylorshin");
+    this.setState({
+      user: (result.data as any),
+    });
+  }
+
   public render() {
+    const { user } = this.state;
+
+    if (!user) {
+      return (
+        <div className="d-flex justify-content-center align-items-center h-100">
+          <h1>Loading...</h1>
+        </div>
+      );
+    }
+
     return (
-      <div className={styles.aboutCoWrapper}>
-        <div className={styles.headerWrapper}>
-          <img src="http://res.cloudinary.com/pengyou/image/upload/v1478944663/think-baby-cut_pkkcaf.jpg" />
-          <div className={styles.headerSection}>
-            <div className={styles.mainHeader}>
-              <div>WHAT</div>
-              <div>MAKES</div>
-              <div>THE</div>
-              <div><b>AWESOME</b></div>
-              <div>PRODUCT?</div>
-            </div>
-            <div className={styles.subHeader}>
-              we must start with this question.
-            </div>
+      <div className="d-flex justify-content-center align-items-center h-100">
+        <div className="card">
+          <img className="card-img-top" src={user.avatar_url} alt="Tylor Shin github avatar" />
+          <div className="card-block">
+            <h4 className="card-title">{user.name}</h4>
+            <p className="card-text">{user.bio}</p>
           </div>
         </div>
-        <div className={styles.contentWrapper}>
-          <div className={styles.contentHeader}>
-          I believe.<br />
-          We have to pursue these values.
-          </div>
-          <ul>
-            <li className={`${styles.listItem} clearfix`}>
-              <div className={styles.listLeftBlock}>Emotion</div>
-              <div className={styles.listRightBlock}>
-                The nice products usually touch our emotion.<br />
-                and it usually becomes our reason to keep using the products.
-              </div>
-            </li>
-            <li className={`${styles.listItem} clearfix`}>
-              <div className={styles.listLeftBlock}>Logic</div>
-              <div className={styles.listRightBlock}>
-                It's essential to have the logical, engineered values.<br />
-                Stability, High-performance, Organized algorithm, etc...
-              </div>
-            </li>
-            <li className={`${styles.listItem} clearfix`}>
-              <div className={styles.listLeftBlock}>Influence</div>
-              <div className={styles.listRightBlock}>
-                Our product must change our life styles, make the world a better place.
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div className={`${styles.emotionBlockWrapper} clearfix`}>
-          <div className={styles.emotionBlockLeftBox}>
-            <img src="http://res.cloudinary.com/pengyou/image/upload/v1479021556/emotion_byukcq.jpg" />
-          </div>
-          <div className={styles.emotionBlockRightBox}>
-            <div className={styles.emotionBlockRightBoxContent}>
-              <div className={styles.emotionBlockHeader}>Check app store chart.</div>
-              <div className={styles.emotionBlockContent}>
-                Almost every apps on high charted is concerned with our emotion. <br />
-                Our product must touch people's mind and connect them in a good way.  <br />
-                Product's first goal should be user and what user feel. <br />
-                This could be satisified with design, product itself, or other users.
-              </div>
-            </div>
-          </div>
-        </div>
-        <img src="http://res.cloudinary.com/pengyou/image/upload/v1479019812/products_yvvreh.jpg" />
       </div>
     );
   }
 }
 
-export default withStyles(styles)(AboutCo);
+export default AboutCo;
