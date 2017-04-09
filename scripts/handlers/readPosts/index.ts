@@ -2,7 +2,7 @@ import { DYNAMO_DB_TABLE_NAME } from "../constants";
 const AWS = require("aws-sdk");
 
 const dynamodb = new AWS.DynamoDB();
-const POSTS_COUNT_PER_PAGE: number = 3;
+// const POSTS_COUNT_PER_PAGE: number = 3;
 
 export default function handler(event: any, context: any) {
   const params = {
@@ -21,7 +21,6 @@ export default function handler(event: any, context: any) {
         },
         statusCode: 200,
       };
-      console.log(response);
       context.done(null, response);
     }
   });

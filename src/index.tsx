@@ -3,7 +3,6 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import * as ReactDOMServer from "react-dom/server";
 import { RouterContext, match, Router, createMemoryHistory, browserHistory, hashHistory } from "react-router";
-import { History } from "history";
 // import Redux environment
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -18,12 +17,13 @@ import routes from "./routes";
 import CssInjector, { css } from "./components/cssInjector";
 // import helpers
 import { staticHTMLWrapper } from "./helpers/htmlWrapper";
+import "bootstrap";
 
 const IS_PROD: boolean = (process.env.NODE_ENV === "production");
 const IS_SERVER: boolean = (typeof window === "undefined");
-const IS_STAGING: boolean = (process.env.NODE_ENV === "staging");
+// const IS_STAGING: boolean = (process.env.NODE_ENV === "staging");
 
-let history: History;
+let history: any;
 if (IS_PROD) {
   if (IS_SERVER) {
     history = createMemoryHistory(); // HACK: You should get request path to sync it with redux store(maybe)
@@ -77,7 +77,7 @@ if (IS_PROD) {
 }
 
 // Create history with store
-let appHistory: ReactRouterRedux.ReactRouterReduxHistory;
+let appHistory: any;
 if (IS_PROD) {
   appHistory = ReactRouterRedux.syncHistoryWithStore(
     history,
@@ -85,7 +85,7 @@ if (IS_PROD) {
   );
 } else {
   appHistory = ReactRouterRedux.syncHistoryWithStore(
-    hashHistory,
+    (hashHistory as any),
     store
   );
 }

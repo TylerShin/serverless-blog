@@ -6,7 +6,7 @@ module.exports = {
     './src/index.tsx',
   ],
   output: {
-    path: __dirname + "/dist",  
+    path: __dirname + "/dist",
     filename: 'bundle.js',
   },
   target: 'node',
@@ -39,6 +39,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
+    new webpack.ProvidePlugin({ $: "jquery", jQuery: "jquery", Tether: "tether" }),
     new webpack.NoErrorsPlugin(),
   ],
 };

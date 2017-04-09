@@ -4,6 +4,7 @@
     "jsdoc-format": false,
     "no-string-literal": false,
     "no-var-requires": false,
+    "object-literal-sort-keys": false,
     "max-line-length": [
       false
     ]

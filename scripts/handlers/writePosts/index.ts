@@ -6,9 +6,6 @@ import { DYNAMO_DB_TABLE_NAME } from "../constants";
 export default function handler(event: any, context: any) {
   const body = JSON.parse(event.body);
 
-  console.log(body, "bodybodybodybodybodybodybodybodybodybody");
-  console.log(body.title, "titletitletitletitletitletitletitletitletitletitle");
-
   const params = {
     TableName: DYNAMO_DB_TABLE_NAME,
     Item: {
@@ -32,7 +29,7 @@ export default function handler(event: any, context: any) {
     context.done(err, {
       statusCode: 500,
       headers: {
-        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+        "Access-Control-Allow-Origin": "*",
       },
     });
   }
@@ -43,14 +40,14 @@ export default function handler(event: any, context: any) {
       context.done(err, {
         statusCode: 500,
         headers: {
-          "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+          "Access-Control-Allow-Origin": "*",
         },
       });
     } else {
       const response = {
         statusCode: 200,
         headers: {
-          "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify(data),
       };
