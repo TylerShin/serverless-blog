@@ -4,7 +4,6 @@ const BROWSER_BUNDLE_FILE_NAME = "bundleBrowser.js";
 
 module.exports = {
   entry: [
-    'babel-polyfill',
     './src/index.tsx',
   ],
   output: {
